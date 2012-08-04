@@ -1,0 +1,9 @@
+Twilio::TwiML.build do |res|
+  res.say    'Hey man! Listen to this!', :voice => 'man'
+  res.gather :action => "/bets.voice",:finishOnKey=>"*", :method => "POST" do |g|
+    g.say 'Place your bets!'
+  end
+  res.say    'Awesome! Thanks!', :voice => 'man'
+  res.hangup
+end
+
