@@ -29,7 +29,7 @@ window.spinWheel = ->
 
   wheel =  $('#wheel')
   wheel.css('-webkit-transform', 'rotate(' + spinToDegrees + 'deg)').
-        css( '-webkit-transition', '20s ease-in-out')
+        css( '-webkit-transition', '20s ease-out')
 
 window.countDown = ->
   window.timeRemaining ||= 20000
