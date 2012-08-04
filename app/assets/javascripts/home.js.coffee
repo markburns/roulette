@@ -9,6 +9,7 @@ channel.bind 'new_bet', (data) ->
     amount: data.amount
     player: player
   player.get('bets').pushObject(chip)
+  player.subtractMoney(data.amount)
 
 channel.bind 'new_player', (data) ->
   App.newPlayer(data)
@@ -102,9 +103,10 @@ App.Chip = Ember.View.extend
 App.Player = Ember.View.extend
   money: 200
   addMoney: (amount) ->
-    @money += amount
+    this.set('money',  this.get('money') + amount)
 
   subtractMoney: (amount) ->
+    this.set('money',  this.get('money') - amount)
 
   template: Ember.Handlebars.compile """
     {{view.content.phone_number}}
