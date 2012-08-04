@@ -7,8 +7,6 @@ class BetParser
     @position = p.to_i
     @phone_number = phone_number
     @valid =  valid_amount? and valid_position?
-    debugger
-    1
   end
 
   def valid?
@@ -16,7 +14,7 @@ class BetParser
   end
 
   def valid_amount?
-    @amount > 0
+    (@amount > 0) and (@amount < 500)
   end
 
   def valid_position?
