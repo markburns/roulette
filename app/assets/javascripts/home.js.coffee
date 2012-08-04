@@ -13,10 +13,20 @@ channel.bind 'new_bet', (data) ->
 channel.bind 'new_player', (data) ->
   App.newPlayer(data)
 
+window.spinToLow = true
+
 window.spinWheel = ->
   countDown()
+
+  if window.spinToLow == true
+    spinToDegrees = 6000
+    window.spinToLow = false
+  else
+    window.spinToLow = true
+    spinToDegrees = 0
+
   wheel =  $('#wheel')
-  wheel.css('-webkit-transform', 'rotate(' + Math.random() * 1200000 + 'deg)').
+  wheel.css('-webkit-transform', 'rotate(' + spinToDegrees + 'deg)').
         css( '-webkit-transition', '20s ease-in-out')
 
 window.countDown = ->
