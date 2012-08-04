@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require pusher
 //= require ember
 //= require home
 

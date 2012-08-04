@@ -1,6 +1,28 @@
+body {
+  background-color: #006600;
+}
+
+#table {
+  background-image: url('table.png');
+  background-size: 100%;
+  width: 900px;
+  height: 241px;
+  // -webkit-transform:rotate(90deg) scale(0.7);
+}
+
 .chip {
-  height: 20px;
-  width: 20px;
-  background-color: #336;
+  height: 30px;
+  width: 30px;
   position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 20px;
+  border: 2px solid rgba(0,0,0,0.5);
+}
+
+.red .chip{
+  background-color: #faa;
+}
+.blue .chip{
+  background-color: #aaf;
 }
