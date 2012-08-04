@@ -13,6 +13,14 @@
 
 body {
   background-color: #006600;
+  font-family: "Yanone Kaffeesatz";
+  font-size: 1.3em;
+}
+
+h1 {
+  color: #fff;
+  font-size: 80px;
+  margin: 20px 20px;
 }
 
 ul {
@@ -35,10 +43,10 @@ ul {
       margin: 0;
       background: rgba(255,255,255,0.5);
       margin: -5px -10px 0 -10px;
-      padding: 5px;
+      padding: 2px 5px;
     }
     h4{
-      margin: 7px 0;
+      margin: 2px 0;
     }
   }
 }
@@ -54,12 +62,24 @@ ul {
 #wheel {
   width: 300px;
   height: 300px;
-  background-image: url('wheel.jpeg');
-  background-size: 100%;
+
   position: absolute;
   bottom: 0;
   right: 0;
-  border-radius: 1000px;
+  h1 {
+    margin: -90px 0 0 0px;
+    color: #fff;
+    text-align: center;
+  }
+  #inner {
+    margin-top: 90px;
+    background-image: url('wheel.jpeg');
+    background-size: 100%;
+    width: 300px;
+    height: 300px;
+    border-radius: 1000px;
+  }
+
 }
 
 .chip {
