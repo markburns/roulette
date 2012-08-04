@@ -1,5 +1,5 @@
 class BetsController < ApplicationController
-  respond_to :voice, :html
+  respond_to :xml, :html
   def new
     render 'new'
   end

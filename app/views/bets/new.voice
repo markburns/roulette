@@ -1,4 +1,0 @@
-Twilio::TwiML.build do |res|
-  res.say 'Place your bets!'
-end
-
