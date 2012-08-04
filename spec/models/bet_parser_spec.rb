@@ -10,7 +10,7 @@ describe BetParser do
     "0*122"   => {amount: 0,   position: 122,  valid: false}
   }.each do |input, output|
     specify do
-      @bet= BetParser.new input
+      @bet= BetParser.new input, '0743434343'
       @bet.amount.  should == output[:amount]
       @bet.position.should == output[:position]
     end

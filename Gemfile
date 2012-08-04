@@ -6,13 +6,15 @@ gem 'rails', '3.2.6'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 
-gem 'twilio-rb', git: 'git://github.com/stevegraham/twilio-rb.git'
+gem 'twilio-rb', git: 'git://github.com/markburns/twilio-rb.git'
+
 gem 'pusher'
 gem 'localtunnel'
 
 group :test do
   gem 'rspec'
 end
+
 group :development do
   platforms :ruby do
     gem 'sqlite3'

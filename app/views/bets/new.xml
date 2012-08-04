@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
-  <Gather action="/bets.xml" method="POST">
+  <Gather action="/bets.xml" method="POST" timeout="30">
     <Say>Place your bets</Say>
   </Gather>
   <Hangup/>
