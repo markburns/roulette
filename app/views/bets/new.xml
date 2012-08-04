@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
-  <Say voice="man">Hey man! Listen to this!</Say>
   <Gather action="/bets.xml" method="POST">
-    <Say>Place your bets!</Say>
+    <Say>Place your bets</Say>
   </Gather>
-  <Say voice="man">Awesome! Thanks!</Say>
   <Hangup/>
 </Response>

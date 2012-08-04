@@ -7,7 +7,10 @@ class BetsController < ApplicationController
   end
 
   def create
-    Notifier.display_bet bet
+    @bet = BetParser.new params["Digits"]
+
+
+    Notifier.display_bet @bet
   end
 
   private
@@ -15,7 +18,7 @@ class BetsController < ApplicationController
     params["From"]
   end
 
-  def bet
-    params["Digits"]
+  def amount
+    BetParser.params["Digits"]
   end
 end
