@@ -7,7 +7,7 @@ class BetsController < ApplicationController
   end
 
   def create
-    @bet = BetParser.new params["Digits"], phone_number
+    @bet = BetParser.new digits, phone_number
 
     if @bet.valid?
       Notifier.display_bet @bet
@@ -18,8 +18,17 @@ class BetsController < ApplicationController
   end
 
   private
+
+  def digits
+    if params["Digits"]
+      params["Digits"]
+    else
+      Notifier.display_phone phone_number
+      params["body"] || params["Body"]
+    end
+  end
+
   def phone_number
     params["From"]
   end
-
 end
