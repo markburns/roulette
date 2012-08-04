@@ -1,3 +1,4 @@
+# PUSHER CONFIG ---------------------------------------------------------------
 pusher = new Pusher('08121a40b90d18b930f5'); # Replace with your app key
 channel = pusher.subscribe('bets')
 
@@ -5,7 +6,12 @@ channel.bind 'new_bet', (data) ->
   chip = App.Chip.create
     position: data.position
     amount: data.amount
-  App.player1.get('bets').pushObject(chip)
+  App.players.get('content').findProperty('phone_number', data.phone_number).get('bets').pushObject(chip)
+
+channel.bind 'new_player', (data) ->
+  App.newPlayer(data)
+
+# -----------------------------------------------------------------------------
 
 App = Em.Application.create
   newPlayer: (data) ->
@@ -13,20 +19,19 @@ App = Em.Application.create
       color: App.availableColors()[0]
       phone_number: data.phone_number
       bets: [
-        {position: 1}
-        {position: 2}
-        {position: 3}
-        {position: 0}
+        # {position: 1}
+        # {position: 2}
+        # {position: 3}
+        # {position: 0}
       ]
     App.players.get('content').pushObject(player)
 
 window.App = App
 
 
-channel.bind 'new_player', (data) ->
-  App.newPlayer(data)
 
 
+# VIEWS --------------------------------
 
 App.Chip = Ember.View.extend
   template :Ember.Handlebars.compile """
@@ -55,8 +60,8 @@ App.Chip = Ember.View.extend
 
 
 
-
 App.Player = Ember.View.extend
+  money: 200
   template: Ember.Handlebars.compile """
     {{view.content.phone_number}}
     {{view view.Chips}}
@@ -70,7 +75,6 @@ App.Player = Ember.View.extend
     contentBinding: 'parentView.content.bets'
 
 
-
 App.Players = Ember.CollectionView.extend
   tagName: 'ul'
   itemViewClass: App.Player
@@ -78,25 +82,16 @@ App.Players = Ember.CollectionView.extend
     template: Ember.Handlebars.compile("No Players")
 
 
+
+# APP HELPERS -------------------------------
+
 App.colors = [
   'red'
   'blue'
+  'green'
+  'brown'
+  'orange'
 ]
-
-App.players = App.Players.create
-  content: []
-App.players.appendTo('body')
-
-
-# App.chips = App.Chips.create
-
-#   content: [
-#     {position: 1}
-#     {position: 2}
-#     {position: 3}
-#     {position: 0}
-#   ]
-# App.chips.appendTo('body')
 
 App.availableColors = ->
   App.colors.diff( App.players.get('content').mapProperty('color') )
@@ -105,3 +100,20 @@ Array.prototype.diff = (a) ->
   return this.filter( (i) ->
     return !(a.indexOf(i) > -1)
   )
+
+App.allBets = ->
+  results = []
+  App.players.get('content').forEach (item) ->
+    item.get('bets').forEach (item) ->
+      results.push(item)
+  return results
+
+
+
+
+
+# SETUP -------------------------------------
+
+App.players = App.Players.create
+  content: []
+App.players.appendTo('body')
