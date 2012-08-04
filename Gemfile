@@ -11,12 +11,20 @@ gem 'localtunnel'
 gem 'twilio-rb'
 
 group :development do
-  gem 'sqlite3'
+  platforms :ruby do
+    gem 'sqlite3'
+  end
+
+  platforms :jruby do
+    gem 'jruby-openssl'
+    gem 'activerecord-jdbcsqlite3-adapter'
+  end
 end
 
 group :production do
-gem 'pg'
+  gem 'pg'
 end
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
