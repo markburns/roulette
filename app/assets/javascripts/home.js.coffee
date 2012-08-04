@@ -13,6 +13,33 @@ channel.bind 'new_bet', (data) ->
 channel.bind 'new_player', (data) ->
   App.newPlayer(data)
 
+window.spinWheel = ->
+  countDown()
+  wheel =  $('#wheel')
+  wheel.css('-webkit-transform', 'rotate(' + Math.random() * 1200000 + 'deg)').
+        css( '-webkit-transition', '20s ease-in-out')
+
+window.countDown = ->
+  window.timeRemaining ||= 20000
+  window.timeRemaining   -= 10
+  if window.timeRemaining == 0
+    window.endGame()
+  else
+    setTimeout(window.countDown, 10)
+
+key 'a', spinWheel
+
+
+window.endGame = () ->
+  winningNumber = Math.floor((Math.random() * 37))
+  matchingBets = App.allBets().filterProperty('position', winningNumber)
+
+  matching.forEach (bet) ->
+    player = bet.get('player')
+    winnings = 35 * bet.get('amount')
+    player.addMoney winnings
+
+
 # -----------------------------------------------------------------------------
 
 App = Em.Application.create
@@ -64,6 +91,11 @@ App.Chip = Ember.View.extend
 
 App.Player = Ember.View.extend
   money: 200
+  addMoney: (amount) ->
+    @money += amount
+
+  subtractMoney: (amount) ->
+
   template: Ember.Handlebars.compile """
     {{view.content.phone_number}}
     {{view view.Chips}}

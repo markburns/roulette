@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require pusher
 //= require ember
+//= require keymaster.min
 //= require home
 
