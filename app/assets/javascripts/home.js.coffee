@@ -8,6 +8,7 @@ channel.bind 'new_bet', (data) ->
     position: data.position
     amount: data.amount
     player: player
+  player.addBet(chip)
   player.get('bets').pushObject(chip)
   player.subtractMoney(data.amount)
 
