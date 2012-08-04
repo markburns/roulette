@@ -51,6 +51,9 @@ window.endGame = () ->
     player.addMoney winnings
   alert "Number " + winningNumber + " won, congratulations: "
 
+  App.allBets().forEach (i) ->
+    i.getPath('player.bets').removeObject(i)
+
 
 # -----------------------------------------------------------------------------
 
@@ -195,19 +198,19 @@ App.players = App.Players.create
   content: []
 App.players.appendTo('body')
 
-# App.newPlayer({money: 200, phone_number: '1'})
-# App.newPlayer({money: 200, phone_number: '2'})
-# App.newPlayer({money: 200, phone_number: '3'})
-# App.newPlayer({money: 200, phone_number: '4'})
-# App.newPlayer({money: 200, phone_number: '5'})
-# App.newPlayer({money: 200, phone_number: '6'})
-# App.newPlayer({money: 200, phone_number: '7'})
-# App.newPlayer({money: 200, phone_number: '8'})
-# App.newPlayer({money: 200, phone_number: '1'})
-# App.newPlayer({money: 200, phone_number: '2'})
-# App.newPlayer({money: 200, phone_number: '3'})
-# App.newPlayer({money: 200, phone_number: '4'})
-# App.newPlayer({money: 200, phone_number: '5'})
-# App.newPlayer({money: 200, phone_number: '6'})
-# App.newPlayer({money: 200, phone_number: '7'})
-# App.newPlayer({money: 200, phone_number: '8'})
+App.newPlayer({money: 200, phone_number: '1'})
+App.newPlayer({money: 200, phone_number: '2'})
+App.newPlayer({money: 200, phone_number: '3'})
+App.newPlayer({money: 200, phone_number: '4'})
+App.newPlayer({money: 200, phone_number: '5'})
+App.newPlayer({money: 200, phone_number: '6'})
+App.newPlayer({money: 200, phone_number: '7'})
+App.newPlayer({money: 200, phone_number: '8'})
+App.newPlayer({money: 200, phone_number: '1'})
+App.newPlayer({money: 200, phone_number: '2'})
+App.newPlayer({money: 200, phone_number: '3'})
+App.newPlayer({money: 200, phone_number: '4'})
+App.newPlayer({money: 200, phone_number: '5'})
+App.newPlayer({money: 200, phone_number: '6'})
+App.newPlayer({money: 200, phone_number: '7'})
+App.newPlayer({money: 200, phone_number: '8'})
