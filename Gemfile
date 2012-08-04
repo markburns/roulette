@@ -7,6 +7,8 @@ gem 'rails', '3.2.6'
 
 
 gem 'twilio-rb', git: 'git://github.com/stevegraham/twilio-rb.git'
+gem 'pusher'
+gem 'localtunnel'
 
 group :development do
   platforms :ruby do
