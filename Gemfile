@@ -6,9 +6,7 @@ gem 'rails', '3.2.6'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 
-
-gem 'localtunnel'
-gem 'twilio-rb'
+gem 'twilio-rb', git: 'git://github.com/stevegraham/twilio-rb.git'
 
 group :development do
   platforms :ruby do

@@ -1,3 +1,14 @@
+GIT
+  remote: git://github.com/stevegraham/twilio-rb.git
+  revision: 8ddf121ca5746a1ec3aed94af69ab470680fd0ae
+  specs:
+    twilio-rb (2.2.0)
+      activesupport (>= 3.0.0)
+      builder (>= 2.1.2)
+      httparty (>= 0.6.1)
+      i18n (~> 0.5)
+      jwt (>= 0.1.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -57,13 +68,10 @@ GEM
       thor (~> 0.14)
     jruby-openssl (0.7.7)
       bouncy-castle-java (>= 1.5.0146.1)
+    json (1.7.4)
     json (1.7.4-java)
     jwt (0.1.5)
       multi_json (>= 1.0)
-    localtunnel (0.3)
-      json (>= 1.2.4)
-      net-ssh (>= 2.0.22)
-      net-ssh-gateway (>= 1.0.1)
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -71,9 +79,6 @@ GEM
     mime-types (1.19)
     multi_json (1.3.6)
     multi_xml (0.5.1)
-    net-ssh (2.5.2)
-    net-ssh-gateway (1.1.0)
-      net-ssh (>= 1.99.1)
     pg (0.14.0)
     polyglot (0.3.3)
     rack (1.4.1)
@@ -115,12 +120,6 @@ GEM
     treetop (1.4.10)
       polyglot
       polyglot (>= 0.3.1)
-    twilio-rb (2.2.0)
-      activesupport (>= 3.0.0)
-      builder (>= 2.1.2)
-      httparty (>= 0.6.1)
-      i18n (~> 0.5)
-      jwt (>= 0.1.3)
     tzinfo (0.3.33)
     uglifier (1.2.7)
       execjs (>= 0.3.0)
@@ -134,10 +133,9 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   jquery-rails
   jruby-openssl
-  localtunnel
   pg
   rails (= 3.2.6)
   sass-rails (~> 3.2.3)
   sqlite3
-  twilio-rb
+  twilio-rb!
   uglifier (>= 1.0.3)
