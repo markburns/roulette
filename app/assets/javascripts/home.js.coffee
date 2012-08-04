@@ -46,10 +46,11 @@ window.endGame = () ->
   winningNumber = Math.floor((Math.random() * 37))
   matchingBets = App.allBets().filterProperty('position', winningNumber)
 
-  matching.forEach (bet) ->
+  matchingBets.forEach (bet) ->
     player = bet.get('player')
     winnings = 35 * bet.get('amount')
     player.addMoney winnings
+  alert "Number " + winningNumber + " won, congratulations: "
 
 
 # -----------------------------------------------------------------------------
