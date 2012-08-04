@@ -1,5 +1,46 @@
+@mixin clearfix{
+  display: inline-block;
+  &:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+  }
+}
+
+
 body {
   background-color: #006600;
+}
+
+ul {
+  width: 680px;
+  background: rgba(255,255,255,0.1);
+  list-style: none;
+  padding: 0;
+  margin-left: 20px;
+  @include clearfix();
+  li{
+    display: block;
+    float: left;
+    width: 190px;
+    height: 80px;
+    padding: 5px 10px;
+    margin: 5px;
+    text-indent: none;
+    text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.3) ;
+    h3{
+      margin: 0;
+      background: rgba(255,255,255,0.5);
+      margin: -5px -10px 0 -10px;
+      padding: 5px;
+    }
+    h4{
+      margin: 7px 0;
+    }
+  }
 }
 
 #table {
@@ -29,22 +70,171 @@ body {
   left: 0;
   border-radius: 20px;
   border: 2px solid rgba(0,0,0,0.5);
+  line-height: 30px;
+  text-align: center;
+  font-weight: bold;
 }
 
-.red .chip{
-  background-color: #faa;
+$red:#f66;
+$blue: #33d + #222;
+$green: #6f6;
+$brown: #630 + #444;
+$orange:#f60;
+$bright_blue: #0ff;
+$purple: #906 + #333;
+$yellow: #ff3;
+
+
+.red {
+  background-color: $red;
+  .chip{
+    background-color: $red;
+  }
 }
-.blue .chip{
-  background-color: #aaf;
+.blue {
+  background-color: $blue;
+  .chip{
+    background-color: $blue;
+  }
 }
-.green .chip{
-  background-color: #afa;
+.green {
+  background-color: $green;
+  .chip{
+    background-color: $green;
+  }
 }
 
-.brown .chip{
-  background-color: #630;
+.brown {
+  background-color: $brown;
+  .chip{
+    background-color: $brown;
+  }
 }
-.orange .chip{
-  background-color: #f60;
+.orange {
+  background-color: $orange;
+  .chip{
+    background-color: $orange;
+  }
 }
 
+.bright_blue {
+  background-color: $bright_blue;
+  .chip{
+    background-color: $bright_blue;
+  }
+}
+.purple {
+  background-color: $purple;
+  .chip{
+    background-color: $purple;
+  }
+}
+.yellow {
+  background-color: $yellow;
+  .chip{
+    background-color: $yellow;
+  }
+}
+
+.red2 {
+  background-color: $red;
+  .chip{
+    background-color: $red;
+  }
+}
+.blue2 {
+  background-color: $blue;
+  .chip{
+    background-color: $blue;
+  }
+}
+.green2 {
+  background-color: $green;
+  .chip{
+    background-color: $green;
+  }
+}
+
+.brown2 {
+  background-color: $brown;
+  .chip{
+    background-color: $brown;
+  }
+}
+.orange2 {
+  background-color: $orange;
+  .chip{
+    background-color: $orange;
+  }
+}
+
+.bright_blue2 {
+  background-color: $bright_blue;
+  .chip{
+    background-color: $bright_blue;
+  }
+}
+.purple2 {
+  background-color: $purple;
+  .chip{
+    background-color: $purple;
+  }
+}
+.yellow2 {
+  background-color: $yellow;
+  .chip{
+    background-color: $yellow;
+  }
+}
+
+
+.red3 {
+  background-color: $red;
+  .chip{
+    background-color: $red;
+  }
+}
+.blue3 {
+  background-color: $blue;
+  .chip{
+    background-color: $blue;
+  }
+}
+.green3 {
+  background-color: $green;
+  .chip{
+    background-color: $green;
+  }
+}
+
+.brown3 {
+  background-color: $brown;
+  .chip{
+    background-color: $brown;
+  }
+}
+.orange3 {
+  background-color: $orange;
+  .chip{
+    background-color: $orange;
+  }
+}
+
+.bright_blue3 {
+  background-color: $bright_blue;
+  .chip{
+    background-color: $bright_blue;
+  }
+}
+.purple3 {
+  background-color: $purple;
+  .chip{
+    background-color: $purple;
+  }
+}
+.yellow3 {
+  background-color: $yellow;
+  .chip{
+    background-color: $yellow;
+  }
+}

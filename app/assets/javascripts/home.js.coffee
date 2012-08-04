@@ -76,7 +76,7 @@ window.App = App
 
 App.Chip = Ember.View.extend
   template :Ember.Handlebars.compile """
-    {{view.content.position}}
+    {{view.content.amount}}
   """
   classNames: ['chip']
   didInsertElement: ->
@@ -90,14 +90,16 @@ App.Chip = Ember.View.extend
     x_pos = Math.floor((pos-1) / 3) * cell_width
     y_pos = -((pos-1) % 3) * cell_height
 
+    rand = {x: Math.random()*20, y: Math.random()*40}
+
     if pos > 0
       @$().offset
-        top: offset.y + chip_offset.y + y_pos
-        left: offset.x + chip_offset.x + x_pos
+        top: offset.y + chip_offset.y + y_pos - rand.y
+        left: offset.x + chip_offset.x + x_pos + rand.x
     else
       @$().offset
-        top: offset.y + chip_offset.y - 80
-        left: offset.x + chip_offset.x - 60
+        top: offset.y + chip_offset.y - 80 - rand.y
+        left: offset.x + chip_offset.x - 60 + rand.x
 
 
 
@@ -110,15 +112,24 @@ App.Player = Ember.View.extend
     this.set('money',  this.get('money') - amount)
 
   template: Ember.Handlebars.compile """
-    {{view.content.phone_number}}
+    <h3>{{view.content.phone_number}}</h3>
+    <h4>£{{view.content.money}}</h4>
     {{view view.Chips}}
+    {{view.content.betCount}} bets
   """
   classNameBindings: ['content.color']
+  bets: []
+  betCount: 0
+  addBet: (bet) ->
+    @get('bets').pushObject(bet)
+    @set('betCount', @get('betCount')+1)
+    @rerender()
+    console.log @get('betCount')
+
+
 
   Chips: Ember.CollectionView.extend
     itemViewClass: App.Chip
-    emptyView: Ember.View.extend
-      template: Ember.Handlebars.compile("No Bets")
     contentBinding: 'parentView.content.bets'
 
 
@@ -138,6 +149,25 @@ App.colors = [
   'green'
   'brown'
   'orange'
+  'bright_blue'
+  'purple'
+  'yellow'
+  'red2'
+  'blue2'
+  'green2'
+  'brown2'
+  'orange2'
+  'bright_blue2'
+  'purple2'
+  'yellow2'
+  'red3'
+  'blue3'
+  'green3'
+  'brown3'
+  'orange3'
+  'bright_blue3'
+  'purple3'
+  'yellow3'
 ]
 
 App.availableColors = ->
@@ -164,3 +194,20 @@ App.allBets = ->
 App.players = App.Players.create
   content: []
 App.players.appendTo('body')
+
+App.newPlayer({money: 200, phone_number: '1'})
+App.newPlayer({money: 200, phone_number: '2'})
+App.newPlayer({money: 200, phone_number: '3'})
+App.newPlayer({money: 200, phone_number: '4'})
+App.newPlayer({money: 200, phone_number: '5'})
+App.newPlayer({money: 200, phone_number: '6'})
+App.newPlayer({money: 200, phone_number: '7'})
+App.newPlayer({money: 200, phone_number: '8'})
+App.newPlayer({money: 200, phone_number: '1'})
+App.newPlayer({money: 200, phone_number: '2'})
+App.newPlayer({money: 200, phone_number: '3'})
+App.newPlayer({money: 200, phone_number: '4'})
+App.newPlayer({money: 200, phone_number: '5'})
+App.newPlayer({money: 200, phone_number: '6'})
+App.newPlayer({money: 200, phone_number: '7'})
+App.newPlayer({money: 200, phone_number: '8'})
