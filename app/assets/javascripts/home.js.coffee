@@ -32,9 +32,8 @@ window.spinWheel = ->
         css( '-webkit-transition', '20s ease-out')
 
 window.countDown = ->
-  window.timeRemaining ||= 20000
+  window.timeRemaining ||= 200
   window.timeRemaining   -= 10
-  # $('#wheel h1').text("sdf")
   if window.timeRemaining == 0
     window.endGame()
   else
