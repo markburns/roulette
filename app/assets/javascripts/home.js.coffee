@@ -9,7 +9,6 @@ channel.bind 'new_bet', (data) ->
     amount: data.amount
     player: player
   player.addBet(chip)
-  player.get('bets').pushObject(chip)
   player.subtractMoney(data.amount)
 
 channel.bind 'new_player', (data) ->
@@ -52,6 +51,9 @@ window.endGame = () ->
     player.addMoney winnings
   alert "Number " + winningNumber + " won, congratulations: "
 
+  App.allBets().forEach (i) ->
+    i.getPath('player.bets').removeObject(i)
+
 
 # -----------------------------------------------------------------------------
 
@@ -82,7 +84,7 @@ App.Chip = Ember.View.extend
   classNames: ['chip']
   didInsertElement: ->
     pos = @get('content').position
-    offset = {x: 97, y:300}
+    offset = {x: 97, y:350}
     chip_offset = {x: -15, y: -15}
 
     cell_height = 78
