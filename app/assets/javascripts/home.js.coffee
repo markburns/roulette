@@ -3,10 +3,12 @@ pusher = new Pusher('08121a40b90d18b930f5'); # Replace with your app key
 channel = pusher.subscribe('bets')
 
 channel.bind 'new_bet', (data) ->
+  player = App.players.get('content').findProperty('phone_number', data.phone_number)
   chip = App.Chip.create
     position: data.position
     amount: data.amount
-  App.players.get('content').findProperty('phone_number', data.phone_number).get('bets').pushObject(chip)
+    player: player
+  player.get('bets').pushObject(chip)
 
 channel.bind 'new_player', (data) ->
   App.newPlayer(data)
