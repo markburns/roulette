@@ -10,6 +10,16 @@
   }
 }
 
+h6 {
+  position: absolute;
+  font-size: 60px;
+  color: white;
+  bottom: 0;
+  right: 0;
+  margin:0;
+  text-align: center;
+  width: 300px;
+}
 
 body {
   background-image: url('felt.jpg');
@@ -72,7 +82,7 @@ ul {
     text-align: center;
   }
   #inner {
-    margin-top: 90px;
+    margin-top: -90px;
     background-image: url('wheel.jpeg');
     background-size: 100%;
     width: 300px;

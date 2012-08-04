@@ -31,12 +31,13 @@ window.spinWheel = ->
         css( '-webkit-transition', '20s ease-out')
 
 window.countDown = ->
-  window.timeRemaining ||= 200
+  window.timeRemaining ||= 20000
   window.timeRemaining   -= 10
   if window.timeRemaining == 0
     window.endGame()
   else
     setTimeout(window.countDown, 10)
+  $('h6#count').text(window.timeRemaining)
 
 key 'a', spinWheel
 
@@ -49,7 +50,8 @@ window.endGame = () ->
     player = bet.get('player')
     winnings = 35 * bet.get('amount')
     player.addMoney winnings
-  alert "Number " + winningNumber + " won, congratulations: "
+  winning_numbers = matchingBets.mapProperty('player').mapProperty('phone_number')
+  alert "Number " + winningNumber + " won, congratulations: #{winning_numbers} "
 
   App.allBets().forEach (i) ->
     i.getPath('player.bets').removeObject(i)
@@ -198,19 +200,19 @@ App.players = App.Players.create
   content: []
 App.players.appendTo('body')
 
-App.newPlayer({money: 200, phone_number: '1'})
-App.newPlayer({money: 200, phone_number: '2'})
-App.newPlayer({money: 200, phone_number: '3'})
-App.newPlayer({money: 200, phone_number: '4'})
-App.newPlayer({money: 200, phone_number: '5'})
-App.newPlayer({money: 200, phone_number: '6'})
-App.newPlayer({money: 200, phone_number: '7'})
-App.newPlayer({money: 200, phone_number: '8'})
-App.newPlayer({money: 200, phone_number: '1'})
-App.newPlayer({money: 200, phone_number: '2'})
-App.newPlayer({money: 200, phone_number: '3'})
-App.newPlayer({money: 200, phone_number: '4'})
-App.newPlayer({money: 200, phone_number: '5'})
-App.newPlayer({money: 200, phone_number: '6'})
-App.newPlayer({money: 200, phone_number: '7'})
-App.newPlayer({money: 200, phone_number: '8'})
+# App.newPlayer({money: 200, phone_number: '1'})
+# App.newPlayer({money: 200, phone_number: '2'})
+# App.newPlayer({money: 200, phone_number: '3'})
+# App.newPlayer({money: 200, phone_number: '4'})
+# App.newPlayer({money: 200, phone_number: '5'})
+# App.newPlayer({money: 200, phone_number: '6'})
+# App.newPlayer({money: 200, phone_number: '7'})
+# App.newPlayer({money: 200, phone_number: '8'})
+# App.newPlayer({money: 200, phone_number: '1'})
+# App.newPlayer({money: 200, phone_number: '2'})
+# App.newPlayer({money: 200, phone_number: '3'})
+# App.newPlayer({money: 200, phone_number: '4'})
+# App.newPlayer({money: 200, phone_number: '5'})
+# App.newPlayer({money: 200, phone_number: '6'})
+# App.newPlayer({money: 200, phone_number: '7'})
+# App.newPlayer({money: 200, phone_number: '8'})
