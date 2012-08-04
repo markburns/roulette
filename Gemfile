@@ -10,11 +10,15 @@ gem 'twilio-rb', git: 'git://github.com/stevegraham/twilio-rb.git'
 gem 'pusher'
 gem 'localtunnel'
 
+group :test do
+  gem 'rspec'
+end
 group :development do
   platforms :ruby do
     gem 'sqlite3'
   end
 
+  gem 'ruby-debug'
   platforms :jruby do
     gem 'jruby-openssl'
     gem 'activerecord-jdbcsqlite3-adapter'
