@@ -1,5 +1,6 @@
 class BetsController < ApplicationController
   respond_to :xml, :html
+
   def new
     number = bet.phone_number
     raise "number"
@@ -20,12 +21,7 @@ class BetsController < ApplicationController
   private
 
   def digits
-    if params["Digits"]
-      params["Digits"]
-    else
-      Notifier.display_phone phone_number
-      params["body"] || params["Body"]
-    end
+    params["Digits"]
   end
 
   def phone_number
