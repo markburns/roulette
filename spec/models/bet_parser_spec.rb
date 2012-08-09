@@ -1,20 +1,25 @@
 require './app/models/bet_parser'
 
 describe BetParser do
-  {
-    "123*0"   => {amount: 123, position: 0,    valid: true},
-    "123*33"  => {amount: 123, position: 33,   valid: true},
-    "4*1"     => {amount: 4,   position: 1,    valid: true},
-    "123*2"   => {amount: 123, position: 2,    valid: true},
-    "123*122" => {amount: 123, position: 122,  valid: false},
-    "0*122"   => {amount: 0,   position: 122,  valid: false}
-  }.each do |input, output|
-    specify do
-      @bet= BetParser.new input, '0743434343'
-      @bet.amount.  should == output[:amount]
-      @bet.position.should == output[:position]
-    end
+  it "obfuscates the incoming number" do
+    @bet = BetParser.new "0", "+447903123456"
+    @bet.phone_number.should == "+44790....456"
   end
 
+  describe "bets" do
+    {
+      "0"   => {position: 0,    valid: true},
+      "1"   => {position: 1,    valid: true},
+      "36"  => {position: 36,   valid: true},
+      "37"  => {position: 37,    valid: false},
+      "122" => {position: 122,  valid: false},
+      "-1"  => {position: -1,   valid: false}
+    }.each do |input, output|
+      specify do
+        @bet = BetParser.new input
+        @bet.position.should == output[:position]
+      end
+    end
+  end
 
 end

@@ -1,24 +1,21 @@
 class BetParser
-  attr_reader :amount, :position, :phone_number
+  attr_reader :position, :phone_number
 
-  def initialize digits, phone_number
-    a, p = digits.split "*"
-    @amount   = a.to_i
-    @position = p.to_i
-    @phone_number = phone_number
-    @valid =  valid_amount? and valid_position?
+  def initialize digits, phone_number = nil
+    @position = digits.to_i
+    @phone_number = obfuscate(phone_number) if phone_number
   end
 
   def valid?
-    @valid
-  end
-
-  def valid_amount?
-    (@amount > 0) and (@amount < 500)
+    valid_position?
   end
 
   def valid_position?
     (@position >= 0) and
     (@position <=36)
+  end
+
+  def obfuscate(n)
+    n[0..5] + "...." + n[-3..-1]
   end
 end
