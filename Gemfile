@@ -5,16 +5,16 @@ gem 'rails', '3.2.6'
 gem 'twilio-rb', git: 'git://github.com/markburns/twilio-rb.git'
 
 gem 'pusher'
-gem 'localtunnel'
+gem 'haml'
 
 group :test do
   gem 'rspec'
 end
 
 group :development do
-  platforms :ruby do
-    gem 'sqlite3'
-  end
+  gem 'localtunnel'
+
+  gem 'sqlite3'
 end
 
 group :production do
