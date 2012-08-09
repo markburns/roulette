@@ -10,6 +10,8 @@ class BetParser
     valid_position?
   end
 
+  private
+
   def valid_position?
     (@position >= 0) and
     (@position <=36)

@@ -1,9 +1,9 @@
 class BetsController < ApplicationController
-  respond_to :xml, :html
+  respond_to :xml
 
   def new
     number = bet.phone_number
-    raise "number"
+
     Notifier.display_phone number
 
     render 'new'
