@@ -1,16 +1,16 @@
 class BetsController < ApplicationController
   respond_to :xml, :html
   def new
-    Notifier.display_phone phone_number
+    number = bet.phone_number
+    raise "number"
+    Notifier.display_phone number
 
     render 'new'
   end
 
   def create
-    @bet = BetParser.new digits, phone_number
-
-    if @bet.valid?
-      Notifier.display_bet @bet
+    if bet.valid?
+      Notifier.display_bet bet
       render 'new'
     else
       render 'create'
@@ -30,5 +30,9 @@ class BetsController < ApplicationController
 
   def phone_number
     params["From"]
+  end
+
+  def bet
+    @bet ||= BetParser.new digits, phone_number
   end
 end
